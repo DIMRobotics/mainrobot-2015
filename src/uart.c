@@ -42,7 +42,7 @@ static inline void set_mode(uint8_t ch)
 static inline void mode_states(uint8_t ch)
 {
         static volatile uint8_t i = 0;
-        
+ 
         odetect_write_state(i, ch == '1');
         i++;
         

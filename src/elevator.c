@@ -9,7 +9,7 @@
 
 #include <util/delay.h>
 
-
+/*
 ANTARES_INIT_HIGH(elevator_init)
 {
         GPIO_INIT_IN_PU(CONFIG_ROBOT_ELEVRESET);
@@ -17,6 +17,7 @@ ANTARES_INIT_HIGH(elevator_init)
         tmgr_delay(500);
         elevator_reset();
 }
+*/
 
 void elevator_reset(void)
 {

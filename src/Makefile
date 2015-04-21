@@ -1,5 +1,13 @@
-objects-y+=main.o init.o timer.o elevator.o uart.o odetect.o
-objects-$(CONFIG_USE_SERVO)+=servo.o cannon.o
+# Main objects for robot
+objects-y += main.o timer.o init.o
+objects-$(CONFIG_USE_ODETECT) += odetect.o uart.o
+objects-$(CONFIG_USE_SERVO)+=servo.o #cannon.o elevator.o
+
+# Command parser
+objects-$(CONFIG_USE_REMOTE) += command_parser.o cmd_handlers.o
+
+# USB support
+subdirs-$(CONFIG_USE_USB) += usb
 
 cflags-y+=-DCONFIG_ROBOT_LIMITER_LEFT=$(call unquote,$(CONFIG_ROBOT_LIMITER_LEFT_Q))
 cflags-y+=-DCONFIG_ROBOT_LIMITER_RIGHT=$(call unquote,$(CONFIG_ROBOT_LIMITER_RIGHT_Q))

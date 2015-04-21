@@ -1,5 +1,30 @@
+config USE_USB
+        bool "Use USB for communication with PC"
+        default y
+
+if USE_USB
+        config RINGBUF_SIZE
+                int "Ring buffer size"
+                default 32
+endif
+
+config USE_REMOTE
+        bool "Use remote command parser for controlling"
+        default y
+
+if USE_REMOTE
+        config REMOTE_ADDR_MAX
+                int "Maximum number of commands"
+                default 16
+endif
+
+config USE_ODETECT
+        bool "Connect ODetect"
+        default y
+
 config USE_SERVO
         bool "Use servo driver"
+        default y
 
 if USE_SERVO
         config ROBOT_NUM_SERVO

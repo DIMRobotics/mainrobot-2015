@@ -144,7 +144,8 @@ ISR(TIMER1_OVF_vect)
         if (index < CONFIG_ROBOT_NUM_SERVO)
                 OCR1A = servo_queue[index].value;
         else
-                OCR1A = 12500;
+                //OCR1A = 12500;
+                OCR1A = 5000;
         TCNT1 = 0;
         TCCR1B = (1<<CS11)|(1<<CS10); /* f_cpu / 64 prescaler */
 }
@@ -163,7 +164,8 @@ ISR(TIMER1_COMPA_vect)
                 servo_off(servo_queue[index++].i);
         
         if (index == CONFIG_ROBOT_NUM_SERVO) {
-                OCR1A = 12500;
+                //OCR1A = 12500;
+                OCR1A = 5000;
                 index++;
         } else {
                 OCR1A = servo_queue[index].value;

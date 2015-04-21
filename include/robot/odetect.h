@@ -4,12 +4,12 @@
 #include <stdint.h>
 
 typedef enum {
-        ODETECT_REAR = (1<<2),
-        ODETECT_RIGHT = (1<<0),
-        ODETECT_FRONT = (1<<1),
-        ODETECT_LEFT = (1<<3),
-        ODETECT_FLEFT = (1<<4),
-        ODETECT_FRIGHT = (1<<5)
+        ODETECT_REAR = (1<<0),
+        ODETECT_RIGHT = (1<<1),
+        ODETECT_FRONT = (1<<5),
+        ODETECT_LEFT = (1<<4),
+        ODETECT_FLEFT = (1<<3),
+        ODETECT_FRIGHT = (1<<2)
 } odetect_dir_t;
 
 void odetect_set_limit(odetect_dir_t dir, uint8_t limit);

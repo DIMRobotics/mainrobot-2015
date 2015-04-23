@@ -74,7 +74,7 @@ void *chassis_state_handler(char method, void *data, uint8_t *size)
 
 void *servo_handler(char method, void *data, uint8_t *size)
 {
-        static uint8_t states[CONFIG_ROBOT_NUM_SERVO];
+        static uint8_t states[CONFIG_ROBOT_NUM_SERVO + 1];
         static uint8_t dummy = 255;
 
         struct srv {
@@ -88,11 +88,11 @@ void *servo_handler(char method, void *data, uint8_t *size)
                 if (srv->addr > CONFIG_ROBOT_NUM_SERVO) {
                         return (void *) &dummy;
                 } else {
-                        return (void *) &states[srv->addr];
+                        return (void *) &states[srv->addr - 1];
                 }       
         } else if (method == 's') {
                 if (srv->addr <= CONFIG_ROBOT_NUM_SERVO) {
-                        states[srv->addr] = srv->pos;
+                        states[srv->addr - 1] = srv->pos;
                         servo_write(srv->addr, srv->pos);
                 }
         }
@@ -139,6 +139,20 @@ void *bsensor_handler(char method, void *data, uint8_t *size)
                 ret = ret > 0;
 
                 return &ret;
+        }
+
+        return &default_y;
+}
+
+void *odetect_handler(char method, void *data, uint8_t *size)
+{
+        *size = 1;
+
+        if (method == 's') {
+                uint8_t mask = *((uint8_t *) data);
+                uint8_t values = *(((uint8_t *) data) + 1);
+
+                odetect_set_limit(mask, values);
         }
 
         return &default_y;

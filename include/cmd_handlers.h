@@ -53,4 +53,7 @@ void *servo_handler(char method, void *data, uint8_t *size);
 void *led_handler(char method, void *data, uint8_t *out_size);
 void *bsensor_handler(char method, void *data, uint8_t *size);
 
+#include <robot/odetect.h>
+void *odetect_handler(char method, void *data, uint8_t *size);
+
 #endif

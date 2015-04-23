@@ -40,6 +40,7 @@ ANTARES_INIT_HIGH(cmd_hndlr_init)
         cmd_set_handler(1, chassis_twist_handler);
         cmd_set_handler(2, chassis_dynamics_handler);
         cmd_set_handler(3, servo_handler);
+        cmd_set_handler(4, odetect_handler);
         cmd_set_handler(5, led_handler);
         cmd_set_handler(6, chassis_state_handler);
         cmd_set_handler(7, bsensor_handler);
@@ -63,14 +64,20 @@ ANTARES_APP(cmd_hndlr)
         static uint8_t buffer[128];
         static uint8_t* reply = NULL;
 
+        if (state == STATE_MODE) {
+                GPIO_WRITE_HIGH(GPB0);
+        }
+
         if (cdc_recv_avail()) {
                 uint8_t byte = cdc_recv_byte();
          
                 if (state == STATE_MODE) {
+                        
                         if (byte != 's' && byte != 'g') {
                                 cdc_send_byte('n');
                                 return;
                         } else {
+                                GPIO_WRITE_LOW(GPB0);
                                 state = STATE_ADDR;
                                 method = byte;
                         }

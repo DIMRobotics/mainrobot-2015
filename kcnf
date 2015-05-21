@@ -9,6 +9,7 @@ if USE_USB
 endif
 
 config USE_REMOTE
+        depends on USE_USB
         bool "Use remote command parser for controlling"
         default y
 

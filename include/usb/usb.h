@@ -33,6 +33,8 @@
  *  Header file for VirtualSerial.c.
  */
 
+#ifdef CONFIG_USE_USB
+
 #ifndef _VIRTUALSERIAL_H_
 #define _VIRTUALSERIAL_H_
 
@@ -71,3 +73,4 @@ uint8_t cdc_recv_avail();
 
 #endif
 
+#endif

@@ -101,7 +101,7 @@ ANTARES_APP(led_blink)
 
 ANTARES_INIT_HIGH(servo_pos)
 {
-        servo_write(1, 87);
+        servo_write(1, 20);
         servo_write(2, 80);
         servo_write(3, 40);
         servo_write(4, 60);

@@ -40,8 +40,6 @@ void paw_close();
 void ball_holder_open();
 void ball_holder_close();
 
-static struct chassis_dynamics dyns;
-
 uint8_t bsensor_get(uint8_t index);
 
 void twist(int16_t spd_left, int16_t spd_right, int32_t distance);

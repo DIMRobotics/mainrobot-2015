@@ -21,10 +21,15 @@ ANTARES_INIT_HIGH(maintimer_init)
         TIMSK0 |= (1<<OCIE0A);
 }
 
+/* If we use extra functions, we will definetly fail
+ * with ANTARES_APPs 
+ */
+#ifndef CONFIG_USE_EXTRA
 ANTARES_APP(tmgr_app)
 {
         tmgr_process();
 }
+#endif
 
 static volatile int32_t timer = -1;
 

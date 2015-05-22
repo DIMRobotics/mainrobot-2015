@@ -19,6 +19,11 @@ if USE_REMOTE
                 default 16
 endif
 
+config USE_EXTRA
+        depends on !USE_USB
+        bool "Use extra manipulators functions"
+        default y
+
 config USE_ODETECT
         bool "Connect ODetect"
         default y

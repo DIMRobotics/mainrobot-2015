@@ -6,6 +6,9 @@ objects-$(CONFIG_USE_SERVO)+=servo.o #cannon.o elevator.o
 # Command parser
 objects-$(CONFIG_USE_REMOTE) += command_parser.o cmd_handlers.o
 
+# Extra robot controlling functions
+objects-$(CONFIG_USE_EXTRA) += extra.o
+
 # USB support
 subdirs-$(CONFIG_USE_USB) += usb
 

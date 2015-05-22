@@ -116,7 +116,7 @@ void twist_wait()
 
 void twist_rotate(int16_t speed, int16_t angle)
 {
-        twist(speed, -speed, angle * 22 * ROBOT_RADIUS / 7 / 180);
+        twist(speed, -speed, (int32_t) angle * (int32_t) 22 * ROBOT_RADIUS / 7 / 180);
 }
 
 void twist_rotate_block(int16_t speed, int16_t angle)

@@ -109,6 +109,11 @@ uint8_t twist_busy()
         return chassis_busy();
 }
 
+void twist_wait()
+{
+        while (chassis_busy());
+}
+
 void twist_rotate(int16_t speed, int16_t angle)
 {
         twist(speed, -speed, angle * 22 * ROBOT_RADIUS / 7 / 180);

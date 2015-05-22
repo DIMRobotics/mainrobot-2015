@@ -46,7 +46,7 @@ DIMRobotics Main Robot Firmware
         git pull
         git fetch
 
-4. Собираем и прошивкаемся
+4. Собираем и прошиваемся
 
         make build # сборка
         make deploy # прошивка
@@ -66,3 +66,37 @@ DIMRobotics Main Robot Firmware
 4. ???
 
 5. PROFIT
+
+Добавление своих исходников
+===========================
+
+1. Создаём файл в дереве
+        
+        your-text-editor src/myfile.c
+
+2. Добавляем его в Makefile, чтобы собрался
+
+        echo "objects-y += myfile.o" >> src/Makefile # важно, что файл с .o, не .с
+
+3. В файле пишем что-нибудь в этом роде
+
+        #include <robot/extra.h>
+
+        ANTARES_APP(my_strategy)
+        {
+                twist(2, 2, 200);
+
+                paw_open();
+
+                // ещё больше кода
+
+                while (1) ;;; // ANTARES_APP циклит исполнение, так можно подвесить робота по окончанию работы
+        }
+
+4. Пересобираем
+        
+        make clean # только после первого дополнения файла в дерево, после изменений не нужно
+        make build
+        make deploy
+
+5. Плохо работает? goto 3

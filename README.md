@@ -44,6 +44,7 @@ DIMRobotics Main Robot Firmware
         cd mainrobot-2015
         git checkout integral
         git pull
+        git fetch
 
 4. Собираем и прошивкаемся
 

@@ -3,40 +3,40 @@
 void catch_stand_open()
 {
         servo_write(2, 95);
-        tmgr_delay(500);
+        tmgr_delay(50);
 }
 
 void catch_stand_close()
 {
         servo_write(2, 126);
-        tmgr_delay(500);
+        tmgr_delay(50);
 }
 
 void elevator_middle()
 {
         servo_write(1, 0);
-        tmgr_delay(700);
+        tmgr_delay(70);
         servo_write(1, 30);
 }
 
 void elevator_up()
 {
         servo_write(1, 80);
-        tmgr_delay(900);
+        tmgr_delay(90);
         servo_write(1, 42);
 }
 
 void elevator_up_steady()
 {
         servo_write(1, 80);
-        tmgr_delay(300);
+        tmgr_delay(30);
         servo_write(1, 42);
 }
 
 void elevator_down()
 {
         servo_write(1, 0);
-        tmgr_delay(600);
+        tmgr_delay(60);
         servo_write(1, 20);
 }
 

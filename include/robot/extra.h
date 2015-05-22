@@ -42,6 +42,7 @@ void ball_holder_close();
 
 uint8_t bsensor_get(uint8_t index);
 
+void twist_wait();
 void twist(int16_t spd_left, int16_t spd_right, int32_t distance);
 void twist_block(int16_t spd_left, int16_t spd_right, int32_t distance);
 uint8_t twist_busy();
